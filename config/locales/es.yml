@@ -1,0 +1,18 @@
+---
+es:
+  activerecord:
+    models:
+      category:
+        one: Categoria
+        others: Categorias
+  categories:
+    form:
+      description: Descripcion
+      name: Nombre
+    new:
+      new_category: Nueva Categoria
+  common:
+    back: Atras
+  task:
+    errors:
+      due_date_not_in_past: "La fecha no puede estar en el pasado"
