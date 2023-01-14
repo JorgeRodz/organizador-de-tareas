@@ -1,24 +1,29 @@
-# README
+# 💎 Gems and Yarn packages 📦
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 📦 Yarn package 📦
 
-Things you may want to cover:
+- bootstrap@4.4.1
+- jquery@3.5.1
+- popper.js@1.16.1
+- roboto-fontface@0.10.0
 
-* Ruby version
+## 💎 Gems 💎
 
-* System dependencies
+### 🖼️ Views - related ▪️
 
-* Configuration
+- **gem `'hamlit'`** → Fastest Haml engine
+- **gem `'simple_form'`** → Haml form builder
+- **gem `'hamlit-rails'`** → To use Hamlit generators
 
-* Database creation
+### 📗 Models - related ▪️
 
-* Database initialization
+- **gem `'annotate'`** → Display as a comment the schema state on models
 
-* How to run the test suite
+### 🗣️ Internationalization(i18n) - related ▪️
 
-* Services (job queues, cache servers, search engines, etc.)
+- **gem `'rails-i18n'`** → Add translation for built in words base on the current locale dictionary
 
-* Deployment instructions
+### 🔬 Debugging - related ▪️
 
-* ...
+- **gem `'pry'`** → Debugging tool
+- **gem `'pry-doc'`** → Ruby/Rails Documentation for Pry
