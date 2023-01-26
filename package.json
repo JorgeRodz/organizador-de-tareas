@@ -2,11 +2,13 @@
   "name": "organizador",
   "private": true,
   "dependencies": {
+    "@nathanvda/cocoon": "^1.2.14",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "^5.4.3",
     "bootstrap": "4.4.1",
+    "cocoon": "github:nathanvda/cocoon#c24ba53",
     "jquery": "3.5.1",
     "popper.js": "1.16.1",
     "roboto-fontface": "0.10.0",

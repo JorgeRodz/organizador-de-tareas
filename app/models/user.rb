@@ -22,4 +22,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # *-------------------- Associations --------------------
+  # A owner(user) has many tasks
+  has_many :owned_tasks, class_name: 'Task', foreign_key: 'owner_id' # Here in order to retrieve to correct values on ->
+  # -> an Active record query....we have to specify the class_name and the foreign_key
+
+  # A user can participate in many tasks.
+  has_many :participations, class_name: 'Participant' # Here we have to specify the model class name
+  has_many :tasks, through: :participations
+  # *------------------- Associations --------------------
 end

@@ -1,3 +1,14 @@
+# 📋 Table of contents 📋
+
+1. [💎 Gems and Yarn packages 📦](#💎-gems-and-yarn-packages-📦)
+   1. [📦 Yarn package 📦](#📦-yarn-package-📦)
+   2. [💎 Gems 💎](#💎-gems-💎)
+      1. [🖼️ Views - related ▪️](#🖼️-views---related-▪️)
+      2. [📗 Models - related ▪️](#📗-models---related-▪️)
+      3. [ 👥 Users - related ▪️️](#👥-users---related-▪️)
+      4. [🗣️ Internationalization(i18n) - related ▪️](#🗣️-internationalizationi18n---related-▪️)
+      5. [🔬 Debugging - related ▪️](#🔬-debugging---related-▪️)
+
 # 💎 Gems and Yarn packages 📦
 
 ## 📦 Yarn package 📦
@@ -18,6 +29,10 @@
 ### 📗 Models - related ▪️
 
 - **gem `'annotate'`** → Display as a comment the schema state on models
+
+### 👥 Users - related ▪️
+
+- **gem `'devise'`** → Manage users registration, login, logout, password recovery, etc.
 
 ### 🗣️ Internationalization(i18n) - related ▪️
 
