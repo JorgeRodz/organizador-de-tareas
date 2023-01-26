@@ -27,6 +27,9 @@ gem 'jbuilder', '~> 2.7'
 
 # ----- Gems added -----
 gem 'annotate'
+gem 'awesome_print'
+gem 'cocoon'
+gem 'devise'
 gem 'hamlit'
 gem 'rails-i18n'
 gem 'simple_form'
