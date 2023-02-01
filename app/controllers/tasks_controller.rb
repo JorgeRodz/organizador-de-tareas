@@ -1,9 +1,15 @@
 class TasksController < ApplicationController
+  load_and_authorize_resource # This is a CanCanCan method that will load the resource and authorize it
   before_action :set_task, only: %i[show edit update destroy]
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = Task.joins(:participants).where(
+      'owner_id = ? OR participants.user_id = ?',
+      current_user.id,  # owner_id
+      current_user.id   # participants.user_id
+    ).group(:id) # To avoid duplications, if a task has more than one participant, it will appear the same number->
+    #-> of times as the number of participants
   end
 
   # GET /tasks/1 or /tasks/1.json
