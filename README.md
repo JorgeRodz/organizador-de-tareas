@@ -32,11 +32,11 @@
 
 ### 👥 Users - related ▪️
 
-- **gem `'devise'`** → Manage users registration, login, logout, password recovery, etc.
+- **gem `'devise'`** → Manage user's registration, login, logout, password recovery, etc.
 
 ### 🗣️ Internationalization(i18n) - related ▪️
 
-- **gem `'rails-i18n'`** → Add translation for built in words base on the current locale dictionary
+- **gem `'rails-i18n'`** → Add translation for built in words based on the current locale dictionary
 
 ### 🔬 Debugging - related ▪️
 
