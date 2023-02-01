@@ -44,8 +44,8 @@ class Task < ApplicationRecord
 
   # To allow the creation of nested attributes for the associated model
   # we need to use the method "accepts_nested_attributes_for"
-  # The option "allow_destroy" allow us to delete the associated model, is we delete a participating user...the task ->
-  # -> will not show up as participant any more.
+  # The option "allow_destroy" allow us to delete the associated model if we delete a participating user...the task ->
+  # -> will not show up as a participant anymore.
   accepts_nested_attributes_for :participating_users, allow_destroy: true
 
   # *----- Custom validations
@@ -56,7 +56,7 @@ class Task < ApplicationRecord
     return if due_date.blank?
     return if due_date > Date.today
 
-    # errors.add() add an error mesage to the object errors collection for the model
+    # errors.add() add an error message to the object errors collection for the model
     errors.add(:due_date, I18n.t('task.errors.due_date_not_in_past'))
   end
 
