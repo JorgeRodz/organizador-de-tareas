@@ -3,6 +3,7 @@
 # Table name: tasks
 #
 #  id          :bigint           not null, primary key
+#  code        :string
 #  description :string
 #  due_date    :date
 #  name        :string
@@ -22,6 +23,10 @@
 #  fk_rails_...  (owner_id => users.id)
 #
 class Task < ApplicationRecord
+  # *-------------------- Callbacks --------------------
+  before_create :create_code
+  # *-------------------- Callbacks --------------------
+
   # *-------------------- Associations --------------------
   belongs_to :category
 
@@ -62,4 +67,8 @@ class Task < ApplicationRecord
 
   # *----- Custom validations
   # *-------------------- Validations --------------------
+
+  def create_code
+    self.code = "#{owner_id}#{Time.now.to_i.to_s(36)}#{SecureRandom.hex(8)}"
+  end
 end
