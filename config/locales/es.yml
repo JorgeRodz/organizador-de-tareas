@@ -13,6 +13,10 @@ es:
       new_category: Nueva Categoria
   common:
     back: Atras
+  devise:
+    failure:
+      user:
+        unauthenticated: "Nesesitas iniciar sesion o registrarte para continuar"
   task:
     errors:
       due_date_not_in_past: "La fecha no puede estar en el pasado"

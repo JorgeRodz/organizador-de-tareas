@@ -27,9 +27,13 @@ gem 'jbuilder', '~> 2.7'
 
 # ----- Gems added -----
 gem 'annotate'
+gem 'awesome_print'
+gem 'cocoon'
+gem 'devise'
 gem 'hamlit'
 gem 'rails-i18n'
 gem 'simple_form'
+gem 'cancancan'
 # ----- Gems added -----
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -49,9 +53,13 @@ group :development do
   gem 'hamlit-rails'
   # ----- Gems added -----
   gem 'listen', '~> 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  # # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+
+  # NOTE: We comment this gems to avoid problems with 'cancancan' gem
+  # gem 'spring'
+  # gem 'spring-watcher-listen', '~> 2.0.0'
+  # NOTE: We comment this gems to avoid problems with 'cancancan' gem
+
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
 end
