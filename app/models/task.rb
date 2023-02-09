@@ -23,11 +23,9 @@
 #  fk_rails_...  (owner_id => users.id)
 #
 class Task < ApplicationRecord
-  # *-------------------- Callbacks --------------------
-  before_create :create_code
-  # *-------------------- Callbacks --------------------
+  # //-------------------- Associations --------------------
+  has_many :notes
 
-  # *-------------------- Associations --------------------
   belongs_to :category
 
   # The 'owner' is a user, so we need to specify the class_name of the model
@@ -37,9 +35,9 @@ class Task < ApplicationRecord
   has_many :participating_users, class_name: 'Participant' # Here we have to specify the model class name
   has_many :participants, through: :participating_users, source: :user # When using the option "through"....we can't ->
   # -> use the "class_name" option instead we use the "source" option
-  # *-------------------- Associations --------------------
+  # //-------------------- Associations --------------------
 
-  # *-------------------- Validations --------------------
+  # //-------------------- Validations --------------------
   # note: "validates" allow us to use built in rails validations
 
   # NOTE: We can also validates associations
@@ -66,9 +64,25 @@ class Task < ApplicationRecord
   end
 
   # *----- Custom validations
-  # *-------------------- Validations --------------------
+  # //-------------------- Validations --------------------
 
+  # //-------------------- Callbacks --------------------
+  # Callbacks are always define after the validations
+  before_create :create_code
+  after_create :send_email
+  # //-------------------- Callbacks --------------------
+
+  # //-------------------- Methods --------------------
   def create_code
     self.code = "#{owner_id}#{Time.now.to_i.to_s(36)}#{SecureRandom.hex(8)}"
+  end
+
+  # This function/method will be trigger the mailer
+  def send_email
+    # As we know the 'participants' is an array so we just add the 'owner' to it. And then loop the array and send a ->
+    #-> email to each of them.
+    (participants + [owner]).each do |user|
+      ParticipantMailer.with(user: user, task: self).new_task_email.deliver! # trigger the mailer
+    end
   end
 end

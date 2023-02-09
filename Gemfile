@@ -51,6 +51,7 @@ end
 group :development do
   # ----- Gems added -----
   gem 'hamlit-rails'
+  gem 'letter_opener'
   # ----- Gems added -----
   gem 'listen', '~> 3.2'
   # # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
