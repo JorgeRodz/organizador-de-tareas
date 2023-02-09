@@ -1,4 +1,5 @@
-%p#notice= notice
+%p#notice
+  = notice
 
 %p
   %b Name:
@@ -12,6 +13,17 @@
 %p
   %b Category:
   = @task.category
+
+.add_new_note_form
+  %hr
+  -#                 method    note(post path) passing the task hash   👇(AJAX) server generated javascript responses RJS
+  = simple_form_for Note.new, url: task_notes_path(task_id: @task.id), remote: true do |f|
+    = f.input :body, label: false, as: :string, placeholder: 'Digite su nota', input_html: { autocomplete: :off }
+  %hr
+.notes_container
+  - @task.notes.reverse_each do |note|
+    -#                                     👇 We pass the note object to the partial
+    = render 'tasks/notes/note.html.haml', note: note
 
 = link_to 'Edit', edit_task_path(@task)
 \|

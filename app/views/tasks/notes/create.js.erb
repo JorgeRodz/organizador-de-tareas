@@ -1,0 +1,11 @@
+<% if @note.persisted? %>
+  var notes_container = document.querySelector(".notes_container")
+  var div = document.createElement("div")
+  var input_note = document.getElementById("note_body")
+
+  div.innerHTML = "<%= j render 'tasks/notes/note', note: @note %>"
+
+  notes_container.insertAdjacentElement('afterbegin', div);
+  input_note.value = "";
+  input_note.blur()
+<% end %>

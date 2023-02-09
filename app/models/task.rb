@@ -24,6 +24,8 @@
 #
 class Task < ApplicationRecord
   # //-------------------- Associations --------------------
+  has_many :notes
+
   belongs_to :category
 
   # The 'owner' is a user, so we need to specify the class_name of the model
