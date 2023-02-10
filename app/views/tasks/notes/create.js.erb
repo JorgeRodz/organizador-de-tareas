@@ -1,6 +1,7 @@
 <% if @note.persisted? %>
-  var notes_container = document.querySelector(".notes_container")
+  var notes_container = document.querySelector(".notes")
   var div = document.createElement("div")
+  div.classList.add("note-element")
   var input_note = document.getElementById("note_body")
 
   div.innerHTML = "<%= j render 'tasks/notes/note', note: @note %>"

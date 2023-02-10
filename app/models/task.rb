@@ -32,7 +32,7 @@ class Task < ApplicationRecord
   belongs_to :owner, class_name: 'User'
 
   # A task can have many participants
-  has_many :participating_users, class_name: 'Participant' # Here we have to specify the model class name
+  has_many :participating_users, class_name: 'Participant', dependent: :destroy # Here we have to specify the model class name
   has_many :participants, through: :participating_users, source: :user # When using the option "through"....we can't ->
   # -> use the "class_name" option instead we use the "source" option
   # //-------------------- Associations --------------------

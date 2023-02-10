@@ -1,30 +1,51 @@
-%p#notice
-  = notice
-
-%p
-  %b Name:
-  = @task.name
-%p
-  %b Description:
-  = @task.description
-%p
-  %b Due date:
-  = @task.due_date
-%p
-  %b Category:
-  = @task.category
-
-.add_new_note_form
-  %hr
-  -#                 method    note(post path) passing the task hash   👇(AJAX) server generated javascript responses RJS
-  = simple_form_for Note.new, url: task_notes_path(task_id: @task.id), remote: true do |f|
-    = f.input :body, label: false, as: :string, placeholder: 'Digite su nota', input_html: { autocomplete: :off }
-  %hr
-.notes_container
-  - @task.notes.reverse_each do |note|
-    -#                                     👇 We pass the note object to the partial
-    = render 'tasks/notes/note.html.haml', note: note
-
-= link_to 'Edit', edit_task_path(@task)
-\|
-= link_to 'Back', tasks_path
+.tasks.show-page
+  .display-4.mt-3.mb-3
+    = "Tarea"
+    %span.small= "[#{@task.code}]"
+  %h2 Información
+  .card
+    .card-body
+      .table-responsive
+        %table.table.table-striped.table-borderless
+          %thead
+            %tr
+              %th Código
+              %th Nombre
+              %th Categoría
+              %th Creador
+          %tbody
+            %tr
+              %td= @task.code
+              %td= @task.name
+              %td= @task.category.name
+              %td= @task.owner.email
+        %table.table.table-striped.table-borderless
+          %thead
+            %tr
+              %th Descripción
+          %tbody
+            %tr
+              %td.font-weight-light= @task.description
+      .task-participants
+        .task-participants-header
+          .font-weight-bold.text-uppercase= 'Participantes'
+        - @task.participating_users.includes(:user).each do |participant|
+          .task-participant{ class: "task-participant--#{participant.role}" }
+            = image_tag "https://robohash.org/#{participant.user.email}?size=60x60", title: participant.user.email
+      = link_to t('common.edit'), edit_task_path(@task)
+      \|
+      = link_to t('common.back'), tasks_path
+    %h2.mt-2.mb-2 Notas
+    .notes-container
+      .card
+        .card-body
+          - if @task.notes.exists?
+            .notes
+              - @task.notes.order(created_at: :desc).each do |note|
+                .note-element
+                  = render 'tasks/notes/note', note: note
+          - else
+            .notes
+          - if can? :add_notes, @task
+            = simple_form_for Note.new, url: task_notes_path(task_id: @task.id), remote: true do |f|
+              = f.input :body, label: false, placeholder: 'Escriba una nota', as: :string, input_html: { autocomplete: :off }

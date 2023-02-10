@@ -34,6 +34,7 @@ gem 'hamlit'
 gem 'rails-i18n'
 gem 'simple_form'
 gem 'cancancan'
+gem 'font-awesome-sass', '~> 5.12.0'
 # ----- Gems added -----
 
 # Reduces boot times through caching; required in config/boot.rb
