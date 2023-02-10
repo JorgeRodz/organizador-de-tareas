@@ -79,6 +79,8 @@ class Task < ApplicationRecord
 
   # This function/method will be trigger the mailer
   def send_email
+    return unless Rails.env.development?
+
     # As we know the 'participants' is an array so we just add the 'owner' to it. And then loop the array and send a ->
     #-> email to each of them.
     (participants + [owner]).each do |user|
