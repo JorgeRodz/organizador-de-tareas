@@ -24,7 +24,8 @@
 
 ## 📷 Screenshots 📷
 
-screenshots here
+![image](https://user-images.githubusercontent.com/13999498/220178220-60ad72c8-8974-4aa1-bdf5-9058cd8298b6.png)
+
 
 ## 🗣️ Description
 
